@@ -1,7 +1,14 @@
-import React  from 'react'
+import React, { useState } from 'react'
+import {SearchContext} from "../../App";
 import PropTypes from "prop-types";
 
 const Header = (props) => {
+  // const [searchValue, setSearchValue] = useState('')
+  //
+  // const handleChange = (event) => {
+  //   setSearchValue(event.target.value)
+  // }
+
   return (
     <>
       <div className="d-flex justify-content-between align-items-center mb-5">
@@ -9,12 +16,25 @@ const Header = (props) => {
           <h1>Movies App</h1>
         </div>
 
-        <div>
-          <div className="mb-3">
-            <label htmlFor="search-movies" className="form-label">Search movies</label>
-            <input type="text" className="form-control" name="search_movies" onChange={props.handleChange} value={props.searchValue} aria-describedby="search-movies" />
-          </div>
-        </div>
+
+        <SearchContext.Consumer>
+          {
+            ( {searchValue, handleChange}) => {
+              return (
+                  <>
+                    <div>
+                      <div className="mb-3">
+                        <label htmlFor="search-movies" className="form-label">Search movies</label>
+                        <input type="text" className="form-control" name="search_movies" onChange={handleChange} value={searchValue} aria-describedby="search-movies" />
+                      </div>
+                    </div>
+                  </>
+              )
+            }
+          }
+
+        </SearchContext.Consumer>
+
 
         <ul className="nav">
           <li className="nav-item">
@@ -31,8 +51,7 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-  searchValue: PropTypes.string,
   handleChange: PropTypes.func
-}
+};
 
 export default Header
