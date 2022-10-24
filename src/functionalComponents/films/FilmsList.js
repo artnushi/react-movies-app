@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { movies } from '../../helpers/data'
 import styled from "styled-components";
+import PropTypes from 'prop-types'
 
 const Card = styled.div`
     img {
@@ -40,9 +41,9 @@ const FilmsList = (props) => {
                             </h3>
                             <div className="card-body">
                                 <p className="card-text">
-                                    {(openedDescription == item._id) ? item.description : getShortDescription(item.description)}
+                                    {(openedDescription === item._id) ? item.description : getShortDescription(item.description)}
                                     <button className={'btn btn-link pt-0 pb-0'}
-                                        onClick={() => toggleReadMore(item._id)}>{openedDescription == item._id ? 'Read less' : 'Read more'}</button>
+                                        onClick={() => toggleReadMore(item._id)}>{openedDescription === item._id ? 'Read less' : 'Read more'}</button>
                                 </p>
                             </div>
                         </Card>
@@ -51,6 +52,10 @@ const FilmsList = (props) => {
             }
         </>
     )
+}
+
+FilmsList.propTypes = {
+    searchValue: PropTypes.string
 }
 
 export default FilmsList
