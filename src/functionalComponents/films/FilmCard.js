@@ -20,6 +20,7 @@ const FilmCard = () => {
         <FilmsList
           searchValue={searchValue}
         />
+
       </div>
     </>
   )
