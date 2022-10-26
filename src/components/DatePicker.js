@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import * as PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
-export const DatePickerInput = ({value, setValues, values}) => {
+export const DatePickerInput = ({ value, setValues, values }) => {
     const [startDate, setStartDate] = useState(new Date());
 
     const handleChange = (value) => {
         setStartDate(value);
-        setValues({...values, date_of_birth: value});
+        setValues({ ...values, date_of_birth: value });
     };
 
     return (
@@ -27,8 +27,6 @@ export const DatePickerInput = ({value, setValues, values}) => {
 };
 
 DatePickerInput.propTypes = {
-    value: PropTypes.string,
-    setValues: PropTypes.string,
-    values: PropTypes.string,
-
+    setValues: PropTypes.func,
+    values: PropTypes.object,
 }
