@@ -13,7 +13,12 @@ const FilmsList = (props) => {
     const [openedDescription, setOpenedDescription] = useState(null)
 
     const toggleReadMore = (id) => {
-        setOpenedDescription(id)
+        if (id == openedDescription) {
+            setOpenedDescription(null)
+        } else {
+            setOpenedDescription(id)
+        }
+
     }
 
     const getShortDescription = (description) => {
@@ -40,9 +45,10 @@ const FilmsList = (props) => {
                             </h3>
                             <div className="card-body">
                                 <p className="card-text">
-                                    {(openedDescription == item._id) ? item.description : getShortDescription(item.description)}
+                                    {(openedDescription === item._id) ? item.description : getShortDescription(item.description)}
                                     <button className={'btn btn-link pt-0 pb-0'}
-                                        onClick={() => toggleReadMore(item._id)}>{openedDescription == item._id ? 'Read less' : 'Read more'}</button>
+                                        onClick={() => toggleReadMore(item._id)}>{openedDescription === item._id ? 'Read less' : 'Read more'}
+                                    </button>
                                 </p>
                             </div>
                         </Card>

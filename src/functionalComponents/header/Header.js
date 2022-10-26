@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+
 
 const Header = (props) => {
   const [searchValue, setSearchValue] = useState('')
@@ -23,10 +26,10 @@ const Header = (props) => {
 
         <ul className="nav">
           <li className="nav-item">
-            <a className="nav-link" href="#">Sign up</a>
+            <Link className="nav-link" to="/SignUp">Sign up</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Login</a>
+            <Link className="nav-link" to="/Login">Login</Link>
           </li>
         </ul>
       </div>
