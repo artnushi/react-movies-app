@@ -3,7 +3,6 @@ import { movies } from "../../helpers/data";
 import styled from "styled-components";
 import { SearchContext } from "../../pages/Home";
 import PropTypes from "prop-types";
-import Header from "../../functionalComponents/header/Header";
 
 function FilmCardFunctional(props) {
   const [readMorebuttonText, setReadMorebuttonText] = useState("Read more");

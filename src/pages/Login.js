@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Validation from "../components/Validation";
 import "../App.css";
+import HeaderPage from "../components/header/HeaderPage";
 
 export default function SignUp() {
   const [values, setValues] = useState({
@@ -26,7 +27,9 @@ export default function SignUp() {
   return (
     <>
       <div className="container">
+        <HeaderPage />
         <div className="card gap-3 m-5">
+
           <div>
             <h2 className="title m-5">Login</h2>
           </div>

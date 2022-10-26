@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import Header from "../functionalComponents/header/Header";
 import FilmCardFunctional from "../components/films/FilmCardFunctional";
+import Header from "../components/header/Header";
 
 export const SearchContext = createContext();
 
@@ -23,10 +23,7 @@ function Home() {
           <Header />
 
           <FilmCardFunctional />
-          {/*<FilmsList />*/}
         </SearchContext.Provider>
-
-        {/*<FilmCard handleChange={ (event) => handleChange(event)} />*/}
       </div>
     </>
   );
