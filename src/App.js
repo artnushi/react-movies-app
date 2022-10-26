@@ -24,6 +24,10 @@ function App () {
 
         <Header />
 
+        <p>
+          You have searched for: {searchValue}
+        </p>
+
         <FilmCardFunctional />
         {/*<FilmsList />*/}
       </SearchContext.Provider>
