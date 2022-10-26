@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
+4;
+import PropTypes from "prop-types";
 
-const Header = (props) => {
-  const [searchValue, setSearchValue] = useState('')
+const Header = ({handleChange, searchValue}) => {
 
-  const handleChange = (event) => {
-    setSearchValue(event.target.value)
-  }
 
   return (
     <>
@@ -34,5 +32,10 @@ const Header = (props) => {
     </>
   )
 }
+
+Header.propTypes = {
+  handleChange: PropTypes.string,
+  searchValue: PropTypes.string,
+};
 
 export default Header
