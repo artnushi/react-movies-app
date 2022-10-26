@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {movies} from "../../helpers/data";
 import styled from "styled-components";
-import {SearchContext} from "../../App";
+import { SearchContext } from '../../functionalComponents/pages/Home';
 import PropTypes from "prop-types";
 import Header from "../../functionalComponents/header/Header";
 
