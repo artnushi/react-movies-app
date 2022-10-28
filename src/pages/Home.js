@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import FilmCardFunctional from "../components/films/FilmCardFunctional";
+import FlowersList from "../components/flowers/FlowersList";
 import Header from "../components/header/Header";
 
 export const SearchContext = createContext();
@@ -22,7 +22,7 @@ function Home() {
         >
           <Header />
 
-          <FilmCardFunctional />
+          <FlowersList/>
         </SearchContext.Provider>
       </div>
     </>
