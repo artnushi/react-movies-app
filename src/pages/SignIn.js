@@ -9,8 +9,8 @@ export default function SignIn() {
             password: ""
         },
         validationSchema: Yup.object({
-            email: Yup.string().email("Please enter valid email").required("Required"),
-            password: Yup.string().required("Requaired")
+            email: Yup.string().email("Please enter valid email").required("Required").min(2, "To short!").max(100, "To Long!"),
+            password: Yup.string().required("Requaired").min(6, "Password need to be longer than 6 characters")
         }),
         onSubmit: (values) => {
             console.log(values);
