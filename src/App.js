@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import AuthenticatedUser from "./pages/AuthenticatedUser";
+import LoginFormik from "./pages/LoginFormik";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login-formik" element={<LoginFormik />} />
           <Route path="/authenticated-user" element={<AuthenticatedUser />} />
         </Routes>
       </BrowserRouter>
