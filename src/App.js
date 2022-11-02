@@ -15,6 +15,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/authenticated-user" element={<AuthenticatedUser />} />
+          <Route path="/counter" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

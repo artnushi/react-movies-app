@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "../App.css";
 import axios from "axios";
 import Layout from "../components/Layout";
@@ -7,6 +7,12 @@ import { Form, Formik, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 import api from "../helpers/api";
+import counterReducer, {ACTION_INCREMENT_TYPE} from "../store/configureStore";
+import { Provider } from 'react-redux'
+import {createStore} from "redux";
+
+const store = createStore(counterReducer);
+
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().required("Email is required!").email("Must be email"),
@@ -39,8 +45,16 @@ function Login(props) {
     console.log("values", values);
   };
 
+    useEffect(() => {
+        console.log('store', store.getState())
+    }, [])
+
   return (
     <>
+        <Provider store={store} >
+
+        <button type={'button'} onClick={ () => store.dispatch({type: ACTION_INCREMENT_TYPE}) } className={'btn btn-primary'}>Increment count: {store.getState().countValue} </button>
+        </Provider>
       <Layout showSearch={false}>
         <div className="card gap-3 m-5">
           <div>
