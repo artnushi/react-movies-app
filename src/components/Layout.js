@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Header from "./header/Header";
 
-function Layout(props) {
+function Layout({children, showSearch = false}) {
+
     return (
         <>
             <div className="container">
-                <Header showSearch={props.showSearch} />
-                {props.children}
+                <Header showSearch={showSearch} />
+                {children}
             </div>
         </>
     );

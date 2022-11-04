@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function Header(props) {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("auth_token");
     localStorage.setItem("isAuthenticated", false);
-    navigate("/login");
+    // navigate("/login");
   };
 
   const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"));
@@ -81,6 +81,12 @@ function Header(props) {
             <li className="nav-item">
               <Link to="/authenticated-user" className="nav-link">
                 Authenticated user
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to="/sightings" className="nav-link">
+                Sightings
               </Link>
             </li>
           </ul>
