@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import AuthenticatedUser from "./pages/AuthenticatedUser";
 import {Provider} from "react-redux";
 import makeStore from "./store/config";
+import Sightings from "./pages/Sightings";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/authenticated-user" element={<AuthenticatedUser />} />
-            <Route path="/counter" element={<Login />} />
+            <Route path="/sightings" element={<Sightings />} />
           </Routes>
         </BrowserRouter>
       </Provider>

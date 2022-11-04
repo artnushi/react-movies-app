@@ -83,6 +83,12 @@ function Header(props) {
                 Authenticated user
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link to="/sightings" className="nav-link">
+                Sightings
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
