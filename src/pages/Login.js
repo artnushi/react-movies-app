@@ -7,12 +7,8 @@ import { Form, Formik, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 import api from "../helpers/api";
-import counterReducer, {ACTION_INCREMENT_TYPE} from "../store/configureStore";
-import { Provider } from 'react-redux'
-import {createStore} from "redux";
-
-const store = createStore(counterReducer);
-
+import {Provider, connect, useSelector, useDispatch} from 'react-redux'
+import {ACTION_INCREMENT_TYPE, handleActionIncrementType} from "../store/app/counter";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().required("Email is required!").email("Must be email"),
@@ -25,8 +21,6 @@ function Login(props) {
   let navigate = useNavigate();
 
   const handleFormSubmit = (values) => {
-    console.log(values);
-
     api
       .post("/users/login", values)
       .then((response) => {
@@ -45,16 +39,13 @@ function Login(props) {
     console.log("values", values);
   };
 
-    useEffect(() => {
-        console.log('store', store.getState())
-    }, [])
+  const dispatch = useDispatch();
 
   return (
     <>
-        <Provider store={store} >
 
-        <button type={'button'} onClick={ () => store.dispatch({type: ACTION_INCREMENT_TYPE}) } className={'btn btn-primary'}>Increment count: {store.getState().countValue} </button>
-        </Provider>
+      <button type={'button'} onClick={ () => dispatch(handleActionIncrementType()) } className={'btn btn-primary'}>{props.sightings.countValueName}: {props.cr.countValue} </button>
+
       <Layout showSearch={false}>
         <div className="card gap-3 m-5">
           <div>
@@ -114,6 +105,10 @@ function Login(props) {
   );
 }
 
+// function mapStateToProps(state) {
+//     return { countValue: state.countValue };
+// }
+
 Login.propTypes = {
   dirty: PropTypes.bool,
   errors: PropTypes.object,
@@ -123,6 +118,9 @@ Login.propTypes = {
   touched: PropTypes.object,
   values: PropTypes.object,
   handleFormSubmit: PropTypes.func,
+  countValue: PropTypes.number,
+    sightings: PropTypes.object,
+    cr: PropTypes.object,
 };
 
-export default Login;
+export default connect(state => state)(Login);

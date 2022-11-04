@@ -4,7 +4,7 @@ import {DatePickerInput} from "../components/DatePicker";
 import axios from "axios";
 import Layout from "../components/Layout";
 
-export default function SignUp() {
+function SignUp(props) {
     const [values, setValues] = useState({
         first_name: "",
         last_name: "",
@@ -126,3 +126,5 @@ export default function SignUp() {
         </>
     );
 }
+
+export default SignUp
