@@ -1,15 +1,16 @@
-// import {put, takeEvery} from 'redux-saga/effects';
+import {put, takeEvery} from 'redux-saga/effects';
 // import api from "../../utils/api";
 
 
 import {ACTION_INCREMENT_TYPE} from "./counter";
+import api from "../../helpers/api";
 
 /********************
  ACTION TYPES
  ********************/
 
 export const FETCH_SIGHTINGS_REQUEST = "FETCH_SIGHTINGS_REQUEST";
-// export const FETCH_SIGHTINGS_SUCCESS = "FETCH_SIGHTINGS_SUCCESS";
+export const FETCH_SIGHTINGS_SUCCESS = "FETCH_SIGHTINGS_SUCCESS";
 
 /********************
  ACTIONS
@@ -19,17 +20,17 @@ export const fetchSightingsRequest = () => ({
     type: FETCH_SIGHTINGS_REQUEST
 });
 
-// export const fetchSightings = (sightings) => ({
-//     type: FETCH_SIGHTINGS_SUCCESS,
-//     sightings
-// });
+export const fetchSightingsSuccess = (data) => ({
+    type: FETCH_SIGHTINGS_SUCCESS,
+    data: data
+});
 
 /********************
  REDUCER
  ********************/
 
 export const initialState = {
-    sightings: [],
+    data: [],
     isFetching: false,
     countValueName: "Click me to increase"
 };
@@ -39,8 +40,14 @@ export const sightings = (state = initialState, action) => {
         case FETCH_SIGHTINGS_REQUEST:
             return {
                 ...state,
-                isFetching: true,
-                countValue: 25
+                isLoading: true
+            };
+
+        case FETCH_SIGHTINGS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                data: action.data
             };
 
         case ACTION_INCREMENT_TYPE:
@@ -68,16 +75,18 @@ export default sightings;
  ********************/
 
 // // watcher
-// export function* sightingsWatcher() {
-//     yield takeEvery(FETCH_SIGHTINGS_REQUEST, FETCH_SIGHTINGS);
-// }
-//
-// export function* FETCH_SIGHTINGS() {
-//     try {
-//         let response = yield api.get('sightings');
-//         let sightings = response.data.sightings;
-//         yield put( fetchSightings(sightings) );
-//     } catch (e) {
-//         console.log('No sighting found')
-//     }
-// }
+export function* sightingsWatcher() {
+    yield takeEvery(FETCH_SIGHTINGS_REQUEST, FETCH_SIGHTINGS);
+}
+
+export function* FETCH_SIGHTINGS() {
+    try {
+        let response = yield api.get('sightings');
+
+        let sightings = response.data.sightings;
+
+        yield put( fetchSightingsSuccess(sightings) );
+    } catch (e) {
+        console.log('No sighting found')
+    }
+}

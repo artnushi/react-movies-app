@@ -7,6 +7,7 @@ import AuthenticatedUser from "./pages/AuthenticatedUser";
 import { Provider } from "react-redux";
 import makeStore from "./store/config";
 import SightingsPage from "./pages/Sightings";
+import FavoriteFlowersPage from "./pages/FavoriteFlowers";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/authenticated-user" element={<AuthenticatedUser />} />
             <Route path="/sightings" element={<SightingsPage />} />
+            <Route path="/favorites" element={<FavoriteFlowersPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>
