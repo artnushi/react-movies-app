@@ -50,6 +50,13 @@ function Header(props) {
 
         <div>
           <ul className="nav">
+
+            <li className="nav-item">
+              <Link to="/sightings" className="nav-link">
+                Sightings
+              </Link>
+            </li>
+
             <li className="nav-item">
               <Link to="/register" className="nav-link">
                 Sign up
@@ -58,6 +65,12 @@ function Header(props) {
 
             {isAuthenticated ? (
               <>
+                <li className="nav-item">
+                  <Link to="/favorites" className="nav-link">
+                    Favorites
+                  </Link>
+                </li>
+
                 <li className="nav-item">
                   <button
                     onClick={handleLogout}
@@ -80,12 +93,6 @@ function Header(props) {
             <li className="nav-item">
               <Link to="/authenticated-user" className="nav-link">
                 Authenticated user
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to="/sightings" className="nav-link">
-                Sightings
               </Link>
             </li>
           </ul>

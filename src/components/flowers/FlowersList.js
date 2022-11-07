@@ -12,7 +12,7 @@ function FlowersList(props) {
     axios
       .get("https://flowrspot-api.herokuapp.com/api/v1/flowers")
       .then((res) => {
-        if (res.status == 200)
+        if (res.status === 200)
           setFlowers(res.data.flowers)
       })
   }, [])
@@ -36,14 +36,14 @@ function FlowersList(props) {
 
     return filteredFlowers.map((flower) => {
       return (
-        <Flower name={flower.name} key={flower.id} image={flower.profile_picture} latin_name={flower.latin_name} />
+        <Flower key={flower.id} flower={flower} image={flower.profile_picture} />
       );
     });
   };
 
   return (
     <>
-      <div className="row gap-md-3">{renderMovies()}</div>
+      <div className="row">{renderMovies()}</div>
     </>
   );
 }

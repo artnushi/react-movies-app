@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Layout from "../components/Layout";
 import SightingList from '../components/sightings/SightingList';
 import { SearchContext } from './Home';
+import {useDispatch, connect} from "react-redux";
+import {fetchSightingsRequest} from "../store/app/sightings";
 
 function SightingsPage() {
     const [searchValue, setSearchValue] = useState("");
@@ -12,8 +14,11 @@ function SightingsPage() {
     };
 
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        console.log('component mounted')
+        // console.log('component mounted')
+        dispatch( fetchSightingsRequest() );
     }, [])
 
     return (
@@ -32,4 +37,4 @@ function SightingsPage() {
     );
 }
 
-export default SightingsPage;
+export default connect(state => state)(SightingsPage);
