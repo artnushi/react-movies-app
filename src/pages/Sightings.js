@@ -1,19 +1,17 @@
-import React, {useEffect} from 'react';
+import React from "react";
+import SightingsList from "../components/SightingsList";
 import Layout from "../components/Layout";
 
 function Sightings() {
-
-
-    useEffect( () => {
-        console.log('component mounted')
-    }, [])
-
-    return (
-        <Layout>
-
-            Sightings
-        </Layout>
-    );
+  return (
+    <>
+      <Layout>
+        <div className="container mt-5">
+          <SightingsList />
+        </div>
+      </Layout>
+    </>
+  );
 }
 
 export default Sightings;
