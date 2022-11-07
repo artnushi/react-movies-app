@@ -1,12 +1,12 @@
-import React  from "react";
+import React from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import AuthenticatedUser from "./pages/AuthenticatedUser";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import makeStore from "./store/config";
-import Sightings from "./pages/Sightings";
+import SightingsPage from "./pages/Sightings";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/authenticated-user" element={<AuthenticatedUser />} />
-            <Route path="/sightings" element={<Sightings />} />
+            <Route path="/sightings" element={<SightingsPage />} />
           </Routes>
         </BrowserRouter>
       </Provider>
