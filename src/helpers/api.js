@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const config = {
-  baseURL: 'https://flowrspot-api.herokuapp.com/api/v1',
+  baseURL: process.env.REACT_APP_BASE_API_URL,
   timeout: 60000,
   headers: {
     'Content-Type': 'application/json',
