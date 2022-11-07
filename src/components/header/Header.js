@@ -14,7 +14,6 @@ function Header(props) {
 
   const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"));
 
-  console.log("isAuthenticated", isAuthenticated);
   return (
     <>
       <div className="d-flex justify-content-between align-items-center mb-5">
